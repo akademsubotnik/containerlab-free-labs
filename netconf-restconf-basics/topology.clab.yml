@@ -13,3 +13,9 @@ topology:
       labels:
         lab-name: "netrestconf Basics"
         router-name: "R1"
+    pc1:
+      kind: linux
+      image: alpine:latest
+
+  links:
+    - endpoints: ["r1:eth1", "pc1:eth1"]  # 10.0.1.0/24
