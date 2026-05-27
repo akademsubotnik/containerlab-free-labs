@@ -1,0 +1,15 @@
+name: netconf-restconf-basics
+#NETCONF and RESTCONF use yml to 
+topology:
+  nodes:
+    r1:
+      kind: linux
+      image: frr-ssh:latest
+      binds:
+        - configs/r1/daemons:/etc/frr/daemons
+        - configs/r1/frr.conf:/etc/frr/frr.conf
+      ports:
+        - 2221:22  # SSH access
+      labels:
+        lab-name: "OSPF Basics"
+        router-name: "R1"
