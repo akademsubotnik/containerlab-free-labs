@@ -1,0 +1,10 @@
+! Enable local authentication for API users
+username admin privilege 15 secret cisco123
+
+! Enable HTTP and HTTPS secure server
+ip http server
+ip http authentication local
+ip http secure-server
+
+! Enable RESTCONF
+restconf
