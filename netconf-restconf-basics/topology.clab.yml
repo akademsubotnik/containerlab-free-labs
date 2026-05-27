@@ -6,7 +6,7 @@ topology:
       kind: linux
       image: frr-ssh:latest
       binds:
-        - configs/r1/daemons:/etc/frr/daemons
+      #  - configs/r1/daemons:/etc/frr/daemons
         - configs/r1/frr.conf:/etc/frr/frr.conf
       ports:
         - 2221:22  # SSH access
@@ -15,7 +15,13 @@ topology:
         router-name: "R1"
     pc1:
       kind: linux
-      image: alpine:latest
+      image: ubuntu:latest
+      #binds:
+      #  - configs/pc1/pc1config.conf:/etc/pc1config/pc1config.conf
+      #ports: 
+      #  - 2221:22 # SSH access
+      #labels:
+      #  lab-name: netconf-restconf-basics
 
   links:
     - endpoints: ["r1:eth1", "pc1:eth1"]  # 10.0.1.0/24
