@@ -11,5 +11,5 @@ topology:
       ports:
         - 2221:22  # SSH access
       labels:
-        lab-name: "OSPF Basics"
+        lab-name: "netrestconf Basics"
         router-name: "R1"
