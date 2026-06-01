@@ -9,7 +9,7 @@ topology:
         - configs/r1/daemons:/etc/frr/daemons
         - configs/r1/frr.conf:/etc/frr/frr.conf
       ports:
-        - 2221:22  # SSH access
+        - 2221:22  # SSH access (UN:admin PW:cisco)
       labels:
         lab-name: "netrestconf Basics"
         router-name: "R1"
@@ -17,6 +17,21 @@ topology:
     r2:
       kind: cisco_csr1000v
       image: edwin71/cisco-csr1000v:17.03.08
+      binds:
+      #  - configs/r2/r2-config.txt:/etc/frr/daemons
+        - configs/r2/frr.conf:/etc/frr/frr.conf
+      ports:
+        #- 2222:22  # SSH access
+        - 443:443/tcp   # Exposes HTTPS/RESTCONF
+        - 80:80/tcp     # Exposes HTTP
+      startup-config: configs/r2/r2-config.txt #Maps your config file
+      labels:
+        lab-name: "netrestconf Basics"
+        router-name: "R2"
+
+    r3:
+      kind: cisco_csr1000v
+      image: dtagdevsec/ciscoasa:24.04.1
       binds:
       #  - configs/r2/r2-config.txt:/etc/frr/daemons
         - configs/r2/frr.conf:/etc/frr/frr.conf
