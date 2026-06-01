@@ -21,7 +21,7 @@ topology:
       #  - configs/r2/r2-config.txt:/etc/frr/daemons
         - configs/r2/frr.conf:/etc/frr/frr.conf
       ports:
-        #- 2222:22  # SSH access
+        - 2222:22  # SSH access (UN:admin/PW:cisco)
         - 443:443/tcp   # Exposes HTTPS/RESTCONF
         - 80:80/tcp     # Exposes HTTP
       startup-config: configs/r2/r2-config.txt #Maps your config file
@@ -34,15 +34,15 @@ topology:
       image: dtagdevsec/ciscoasa:24.04.1
       binds:
       #  - configs/r2/r2-config.txt:/etc/frr/daemons
-        - configs/r2/frr.conf:/etc/frr/frr.conf
+        - configs/r3/frr.conf:/etc/frr/frr.conf
       ports:
-        #- 2222:22  # SSH access
-        - 443:443/tcp   # Exposes HTTPS/RESTCONF
-        - 80:80/tcp     # Exposes HTTP
-      startup-config: configs/r2/r2-config.txt #Maps your config file
+        - 2223:22  # SSH access (UN:?/PW:?)
+        #- 443:443/tcp   # Exposes HTTPS/RESTCONF
+        #- 80:80/tcp     # Exposes HTTP
+      #startup-config: configs/r2/r2-config.txt #Maps your config file
       labels:
         lab-name: "netrestconf Basics"
-        router-name: "R2"
+        router-name: "R3"
 
     pc1:
       kind: linux
