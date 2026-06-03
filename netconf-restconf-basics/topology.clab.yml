@@ -35,8 +35,8 @@ topology:
       image: edwin71/cisco-csr1000v:17.03.08
       binds:
       #  - configs/r2/r2-config.txt:/etc/frr/daemons
-      #  - configs/r3/frr.conf:/etc/frr/frr.conf
-      ports:
+        - configs/r3/frr.conf:/etc/frr/frr.conf
+      #ports:
         #- 2222:22  # SSH access (UN:admin/PW:admin)
       #  - 443:443/tcp   # Exposes HTTPS/RESTCONF
       #  - 80:80/tcp     # Exposes HTTP
@@ -50,4 +50,4 @@ topology:
 
 
   links:
-    - endpoints: ["r2:gb1", "r3:gb1"]  
+    - endpoints: ["r2:eth1", "r3:eth1"]  
