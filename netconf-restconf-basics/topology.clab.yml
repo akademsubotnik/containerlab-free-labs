@@ -27,6 +27,7 @@ topology:
     r3:
       kind: cisco_csr1000v
       image: edwin71/cisco-csr1000v:17.03.08
+      entrypoint: "/bin/sh /scripts/entrypoint.sh"
       binds:
         - configs/r3/frr.conf:/etc/frr/frr.conf
       labels:
