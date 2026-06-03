@@ -1,5 +1,5 @@
 name: netconf-restconf-basics
-#NETCONF and RESTCONF use yml to 
+
 topology:
   nodes:
     r1:
@@ -18,12 +18,7 @@ topology:
       kind: cisco_csr1000v
       image: edwin71/cisco-csr1000v:17.03.08
       binds:
-      #  - configs/r2/r2-config.txt:/etc/frr/daemons
         - configs/r2/frr.conf:/etc/frr/frr.conf
-      ports:
-        #- 2222:22  # SSH access (UN:admin/PW:admin)
-        - 443:443/tcp   # Exposes HTTPS/RESTCONF
-        - 80:80/tcp     # Exposes HTTP
       startup-config: configs/r2/r2-config.txt #Maps your config file
       labels:
         lab-name: "netrestconf Basics"
@@ -34,13 +29,7 @@ topology:
       kind: cisco_csr1000v
       image: edwin71/cisco-csr1000v:17.03.08
       binds:
-      #  - configs/r2/r2-config.txt:/etc/frr/daemons
         - configs/r3/frr.conf:/etc/frr/frr.conf
-      #ports:
-        #- 2222:22  # SSH access (UN:admin/PW:admin)
-      #  - 443:443/tcp   # Exposes HTTPS/RESTCONF
-      #  - 80:80/tcp     # Exposes HTTP
-      #startup-config: configs/r3/r3-config.txt #Maps your config file
       labels:
         lab-name: "netrestconf Basics"
         router-name: "R3-snmpclient"
