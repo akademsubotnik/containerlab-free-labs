@@ -19,7 +19,6 @@ topology:
       image: edwin71/cisco-csr1000v:17.03.08
       binds:
         - configs/r2/frr.conf:/etc/frr/frr.conf
-      startup-config: configs/r2/r2-config.txt #Maps your config file
       labels:
         lab-name: "netrestconf Basics"
         router-name: "R2-snmpmanager"
