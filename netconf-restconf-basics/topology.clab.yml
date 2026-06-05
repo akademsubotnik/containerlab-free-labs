@@ -16,7 +16,7 @@ topology:
     #     PASSWORD : 'admin'
     #   binds:
     #     - configs/r1/daemons:/etc/frr/daemons
-    #     - configs/r1/frr.conf:/etc/frr/frr.conf
+    #     - configs/r1/frr.conf:/etc/frr/frr.cfg
     #   ports:
     #     - 2221:22  # SSH access (UN:admin PW:cisco)
     #   labels:
@@ -36,7 +36,7 @@ topology:
         USERNAME : 'admin'
         PASSWORD : 'admin'      
       binds:
-        - configs/r2/frr.conf:/etc/frr/frr.conf
+        - configs/r2/frr.conf:/etc/frr/frr.cfg
       labels:
         lab-name: "netrestconf Basics"
         router-name: "snmpmanager"
@@ -56,7 +56,7 @@ topology:
         PASSWORD : 'admin'      
       binds:
         - scripts/deploy-script.sh:/tmp/deploy-script.sh
-        - configs/r3/frr.conf:/etc/frr/frr.conf      
+        - configs/r3/frr.conf:/etc/frr/frr.cfg     
       # entrypoint: "/bin/sh tmp/deploy-script.sh"
       labels:
         lab-name: "netrestconf Basics"
