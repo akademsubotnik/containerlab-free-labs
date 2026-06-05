@@ -1,10 +1,18 @@
 name: netconf-restconf-basics
 
+mgmt:
+  network: clab-mgmt
+  ipv4-subnet: 172.20.20.0/24
+  ipv6-subnet: 3fff:172:20:20::/64
+
 topology:
   nodes:
     r1:
       kind: linux
       image: frr-ssh:latest
+      env:
+        USERNAME : 'admin'
+        PASSWORD : 'admin'
       binds:
         - configs/r1/daemons:/etc/frr/daemons
         - configs/r1/frr.conf:/etc/frr/frr.conf
@@ -17,6 +25,9 @@ topology:
     r2:
       kind: cisco_csr1000v
       image: edwin71/cisco-csr1000v:17.03.08
+      env:
+        USERNAME : 'admin'
+        PASSWORD : 'admin'      
       binds:
         - configs/r2/frr.conf:/etc/frr/frr.conf
       labels:
@@ -27,16 +38,18 @@ topology:
     r3:
       kind: cisco_csr1000v
       image: edwin71/cisco-csr1000v:17.03.08
-      entrypoint: "/bin/sh /scripts/entrypoint.sh"
+      env:
+        USERNAME : 'admin'
+        PASSWORD : 'admin'      
       binds:
-        - configs/r3/frr.conf:/etc/frr/frr.conf
+        - scripts/deploy-script.sh:/tmp/deploy-script.sh
+        - configs/r3/frr.conf:/etc/frr/frr.conf      
+      # entrypoint: "/bin/sh tmp/deploy-script.sh"
       labels:
         lab-name: "netrestconf Basics"
         router-name: "R3-snmpclient"
 #mirror another R2 (cisco_csr1000v for snmp manager and snmp agent)
-# with endpoint connections!
-
-
+# with endpoint connections!    
 
   links:
     - endpoints: ["r2:eth1", "r3:eth1"]  
