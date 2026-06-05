@@ -30,13 +30,12 @@ topology:
       env:
         USERNAME : 'admin'
         PASSWORD : 'admin'      
-      #binds:
-      #  - configs/r2/frr.cfg:/etc/frr/frr.conf
       startup-config: configs/r2/frr.txt
+      #ports:
+      #  - 2222:22  # SSH access
       labels:
         lab-name: "netrestconf Basics"
         router-name: "snmpmanager"
-
 
     r3:
       mgmt-ipv4: 192.168.0.4
@@ -45,15 +44,12 @@ topology:
       env:
         USERNAME : 'admin'
         PASSWORD : 'admin'      
-      #binds:
-      #  - configs/r3/frr.cfg:/etc/frr/frr.conf
       startup-config: configs/r3/frr.txt
-      # entrypoint: "/bin/sh tmp/deploy-script.sh"
+      #ports:
+      #  - 2223:22  # SSH access
       labels:
         lab-name: "netrestconf Basics"
         router-name: "snmpclient"
-#mirror another R2 (cisco_csr1000v for snmp manager and snmp agent)
-# with endpoint connections!    
 
   links:
-    - endpoints: ["r2:eth0", "r3:eth0"]  
+    - endpoints: ["r2:eth2", "r3:eth2"]  #GigabitEthernet2 on both routers
