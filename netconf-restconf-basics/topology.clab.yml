@@ -2,7 +2,7 @@ name: netconf-restconf-basics
 
 mgmt:
   network: clab-mgmt
-  ipv4-subnet: 192.168.0.0/24
+  ipv4-subnet: 172.20.20.0/24
   ipv6-subnet: 3fff:172:20:20::/64
 
 topology:
@@ -24,7 +24,7 @@ topology:
     #     router-name: "ssh-container"
       
     r2:
-      mgmt-ipv4: 192.168.0.3
+      mgmt-ipv4: 172.20.20.3
       kind: cisco_csr1000v
       image: edwin71/cisco-csr1000v:17.03.08
       env:
@@ -38,7 +38,7 @@ topology:
         router-name: "snmpmanager"
 
     r3:
-      mgmt-ipv4: 192.168.0.4
+      mgmt-ipv4: 172.20.20.4
       kind: cisco_csr1000v
       image: edwin71/cisco-csr1000v:17.03.08
       env:
@@ -52,4 +52,4 @@ topology:
         router-name: "snmpclient"
 
   links:
-    - endpoints: ["r2:eth2", "r3:eth2"]  #GigabitEthernet2 on both routers
+    - endpoints: ["r2:eth1", "r3:eth1"]  #GigabitEthernet2 on both routers , # 10.0.3.0/24

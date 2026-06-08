@@ -14,7 +14,7 @@ line vty 0 4
  transport input ssh
 !
 interface GigabitEthernet2
- ip address 10.0.2.2 255.255.255.0
+ ip address 10.0.3.2 255.255.255.0
  no shutdown
 !
 end
