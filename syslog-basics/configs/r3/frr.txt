@@ -1,0 +1,21 @@
+# This is a basic FRR configuration file for router R3 in the netconf-restconf-basics lab.
+hostname r3
+!
+ip domain-name lab.local
+!
+# Generates the required RSA keys (SSH won't start without this)
+crypto key generate rsa modulus 2048
+!
+# Define a local user with access privileges
+username admin privilege 15 secret admin123
+!
+# Force the VTY lines to accept SSH and use local credentials
+line vty 0 4
+ login local
+ transport input ssh
+!
+interface GigabitEthernet2
+ ip address 10.0.3.3 255.255.255.0
+ no shutdown
+!
+end
